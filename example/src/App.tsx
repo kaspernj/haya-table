@@ -1,17 +1,32 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'haya-table';
+import { Column, HeadColumn, Row, Table, Tbody, Thead } from 'haya-table';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
-
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Table>
+        <Thead>
+          <Row>
+            <HeadColumn>Column 1</HeadColumn>
+            <HeadColumn>Column 2</HeadColumn>
+            <HeadColumn>Column 3</HeadColumn>
+          </Row>
+        </Thead>
+        <Tbody>
+          <Row>
+            <Column>
+              Value 1
+            </Column>
+            <Column>
+              Value 2
+            </Column>
+            <Column>
+              Value 3
+            </Column>
+          </Row>
+        </Tbody>
+      </Table>
     </View>
   );
 }
